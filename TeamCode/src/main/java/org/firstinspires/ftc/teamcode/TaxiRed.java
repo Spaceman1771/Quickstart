@@ -32,8 +32,10 @@ public class TaxiRed extends OpMode {
 
 
 
-    private final Pose startPose = new Pose(84, 136, Math.toRadians(90));
-    private final Pose endPose = new Pose(84, 55, Math.toRadians(0));
+//    private final Pose startPose = new Pose(84, 136, Math.toRadians(90));
+//    private final Pose endPose = new Pose(84, 55, Math.toRadians(0));
+    private final Pose startPose = new Pose(84, 8, Math.toRadians(0));
+    private final Pose endPose = new Pose(84, 35, Math.toRadians(0));
     private Path taxiPath;
     //private PathChain grabPickup1, scorePickup1, grabPickup2, scorePickup2, grabPickup3, scorePickup3;
 

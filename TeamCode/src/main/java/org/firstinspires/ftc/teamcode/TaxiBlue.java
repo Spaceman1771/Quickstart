@@ -32,8 +32,8 @@ public class TaxiBlue extends OpMode {
 
 
 
-    private final Pose startPose = new Pose(60, 136, Math.toRadians(90));
-    private final Pose endPose = new Pose(60, 55, Math.toRadians(180));
+    private final Pose startPose = new Pose(60, 8, Math.toRadians(180));
+    private final Pose endPose = new Pose(60, 35, Math.toRadians(180));
     private Path taxiPath;
     //private PathChain grabPickup1, scorePickup1, grabPickup2, scorePickup2, grabPickup3, scorePickup3;
 
