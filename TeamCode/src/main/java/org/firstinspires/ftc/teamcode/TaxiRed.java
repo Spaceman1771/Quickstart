@@ -51,7 +51,6 @@ public class TaxiRed extends OpMode {
     public void autonomousPathUpdate() {
         switch (pathState) {
             case 0:
-                intakeMotor.setPower(-0.2);
                 follower.followPath(taxiPath);
                 setPathState(1);
                 break;
@@ -109,7 +108,6 @@ public class TaxiRed extends OpMode {
         serializerServo = hardwareMap.get(Servo.class, "serializer");
         shooterMotor = hardwareMap.get(DcMotorEx.class, "shooter");
         intakeMotor = hardwareMap.get(DcMotorEx.class, "intake");
-        intakeMotor.setPower(-0.2);
         shooterSubsystem = new ShooterSubsystem(shooterMotor);
         spindexerSubsystem = new SpindexerSubsystem(spindexerServo);
 

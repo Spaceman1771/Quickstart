@@ -54,7 +54,7 @@ public class ScorePreloadsBlue extends OpMode {
     public void autonomousPathUpdate() {
         switch (pathState) {
             case 0:
-                shooterSubsystem.revToRPM(5000);
+                shooterSubsystem.revToRPM(3000);
                 intakeMotor.setPower(-0.2);
                 follower.followPath(scorePreload);
                 setPathState(1);
@@ -130,7 +130,6 @@ public class ScorePreloadsBlue extends OpMode {
         serializerServo = hardwareMap.get(Servo.class, "serializer");
         shooterMotor = hardwareMap.get(DcMotorEx.class, "shooter");
         intakeMotor = hardwareMap.get(DcMotorEx.class, "intake");
-        intakeMotor.setPower(-0.2);
         shooterSubsystem = new ShooterSubsystem(shooterMotor);
         spindexerSubsystem = new SpindexerSubsystem(spindexerServo);
 
@@ -154,6 +153,7 @@ public class ScorePreloadsBlue extends OpMode {
      * It runs all the setup actions, including building paths and starting the path system **/
     @Override
     public void start() {
+        intakeMotor.setPower(-0.2);
         opmodeTimer.resetTimer();
         setPathState(0);
     }
