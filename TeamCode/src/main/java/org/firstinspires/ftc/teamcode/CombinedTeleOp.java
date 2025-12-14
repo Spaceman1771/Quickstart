@@ -68,7 +68,9 @@ public class CombinedTeleOp extends OpMode {
     @Override
     public void init() {
         follower = Constants.createFollower(hardwareMap);
-        follower.setStartingPose(startingPose == null ? new Pose() : startingPose);
+
+        follower.setStartingPose(startingPose == null ? new Pose(72, 72, 0) : startingPose);
+
         follower.update();
         telemetryM = PanelsTelemetry.INSTANCE.getTelemetry();
 
@@ -98,6 +100,13 @@ public class CombinedTeleOp extends OpMode {
         //Call this once per loop
         follower.update();
         telemetryM.update();
+
+        if (gamepad1.leftBumperWasPressed()) {
+            follower.setPose(new Pose(72, 72, 0));
+        }
+        if (gamepad1.left_trigger > 0) {
+            follower.setPose(new Pose(72, 72, 180));
+        }
 
 
         if (!automatedDrive) {

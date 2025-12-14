@@ -32,13 +32,18 @@ public class ScorePreloadsRed extends OpMode {
 
     private final Pose startPose = new Pose(86, 8, Math.toRadians(90));
     private final Pose scorePose = new Pose(105, 115, Math.toRadians(45));
+    private final Pose endPose = new Pose(84, 55, Math.toRadians(0));
     private Path scorePreload;
+    private Path leaveShootingZone;
     //private PathChain grabPickup1, scorePickup1, grabPickup2, scorePickup2, grabPickup3, scorePickup3;
 
     public void buildPaths() {
         /* This is our scorePreload path. We are using a BezierLine, which is a straight line. */
         scorePreload = new Path(new BezierLine(startPose, scorePose));
         scorePreload.setLinearHeadingInterpolation(startPose.getHeading(), scorePose.getHeading());
+
+        leaveShootingZone = new Path(new BezierLine(scorePose, endPose));
+        leaveShootingZone.setLinearHeadingInterpolation(scorePose.getHeading(), endPose.getHeading());
 
         /* Here is an example for Constant Interpolation
         scorePreload.setConstantInterpolation(startPose.getHeading()); */
@@ -67,6 +72,9 @@ public class ScorePreloadsRed extends OpMode {
 
                     setPathState(2);
                 }
+                break;
+            case 2:
+                follower.followPath(leaveShootingZone);
                 break;
         }
     }
