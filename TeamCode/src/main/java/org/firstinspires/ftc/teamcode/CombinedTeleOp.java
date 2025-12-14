@@ -90,6 +90,7 @@ public class CombinedTeleOp extends OpMode {
         //In order to use float mode, add .useBrakeModeInTeleOp(true); to your Drivetrain Constants in Constant.java (for Mecanum)
         //If you don't pass anything in, it uses the default (false)
         follower.startTeleopDrive();
+        spindexerServo.setPosition(0);
     }
 
     @Override
@@ -132,20 +133,20 @@ public class CombinedTeleOp extends OpMode {
             automatedDrive = false;
         }
 
-        //Slow Mode
-        if (gamepad1.rightBumperWasPressed()) {
-            slowMode = !slowMode;
-        }
-
-        //Optional way to change slow mode strength
-        if (gamepad1.xWasPressed()) {
-            slowModeMultiplier += 0.25;
-        }
-
-        //Optional way to change slow mode strength
-        if (gamepad2.yWasPressed()) {
-            slowModeMultiplier -= 0.25;
-        }
+//        //Slow Mode
+//        if (gamepad1.rightBumperWasPressed()) {
+//            slowMode = !slowMode;
+//        }
+//
+//        //Optional way to change slow mode strength
+//        if (gamepad1.xWasPressed()) {
+//            slowModeMultiplier += 0.25;
+//        }
+//
+//        //Optional way to change slow mode strength
+//        if (gamepad2.yWasPressed()) {
+//            slowModeMultiplier -= 0.25;
+//        }
 
         telemetryM.debug("position", follower.getPose());
         telemetryM.debug("velocity", follower.getVelocity());
@@ -153,10 +154,10 @@ public class CombinedTeleOp extends OpMode {
 
 
         if (gamepad2.yWasPressed()) {
-            spindexerSubsystem.rotateSpindexer();
+            spindexerSubsystem.rotateSpindexerShooter();
         }
         if (gamepad2.xWasPressed()) {
-            spindexerSubsystem.rotateSpindexerShooter();
+            spindexerSubsystem.rotateSpindexerIntake();
         }
         //if (gamepad2.rightBumperWasPressed()) {
         //    spindexerSubsystem.rotateSpindexerIntake();
@@ -176,8 +177,11 @@ public class CombinedTeleOp extends OpMode {
         }
 
         if (gamepad2.b) {
+            intakeMotor.setPower(0.5);
+        } else if(gamepad2.left_bumper){
             intakeMotor.setPower(-0.5);
-        } else {
+        }
+        else {
             intakeMotor.setPower(0);
         }
         

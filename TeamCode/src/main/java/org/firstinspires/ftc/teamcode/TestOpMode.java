@@ -43,13 +43,13 @@ public class TestOpMode extends OpMode {
     }
     public void loop() {
         if (gamepad2.yWasPressed()) {
-            spindexerSubsystem.rotateSpindexer();
-        }
-        if (gamepad2.xWasPressed()) {
             spindexerSubsystem.rotateSpindexerShooter();
         }
+        if (gamepad2.xWasPressed()) {
+            spindexerSubsystem.rotateSpindexerIntake();
+        }
         //if (gamepad2.rightBumperWasPressed()) {
-        //    spindexerSubsystem.rotateSpindexerIntake();
+        //    spindexerSubsystem.rotateSpindexerInt7ake();
         //}
 
         if (gamepad2.right_trigger > 0) {
